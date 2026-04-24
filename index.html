@@ -11,12 +11,12 @@
         /* Light Mode CSS Reset & Variables */
         :root {
             --bg-main: #ffffff;
-            --bg-panel: #f8f9fa; /* Very soft light gray for sections */
+            --bg-panel: #f8f9fa; 
             --bg-card: #ffffff;
-            --accent-gold: #b3903f; /* Slightly darker gold for better contrast on white */
+            --accent-gold: #b3903f; 
             --accent-gold-glow: rgba(198, 168, 92, 0.1);
-            --text-main: #111827; /* Dark slate for headings */
-            --text-muted: #4b5563; /* Medium gray for paragraphs */
+            --text-main: #111827; 
+            --text-muted: #4b5563; 
             --font-brand: 'Cinzel', serif;
             --font-ui: 'Inter', sans-serif;
             --border-radius: 12px;
@@ -39,7 +39,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            height: 46px; /* TradingView default height */
+            height: 46px; 
             z-index: 1001;
             border-bottom: var(--glass-border);
             background: #fff;
@@ -48,7 +48,7 @@
         /* Glassmorphism Navbar (Light Mode) */
         header {
             position: fixed;
-            top: 46px; /* Sits exactly below the ticker */
+            top: 46px; 
             width: 100%;
             padding: 20px 5%;
             display: flex;
@@ -98,7 +98,7 @@
             background: radial-gradient(circle at top, #ffffff 0%, #f4f5f7 100%);
         }
 
-        /* Ambient Glow Orbs (Softened for Light Mode) */
+        /* Ambient Glow Orbs */
         .orb {
             position: absolute;
             border-radius: 50%;
@@ -114,14 +114,14 @@
         
         .hero h1 {
             font-family: var(--font-brand);
-            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-size: clamp(2.5rem, 7vw, 5.5rem);
             color: var(--text-main);
             margin-bottom: 1.5rem;
             line-height: 1.1;
         }
 
         .hero p {
-            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            font-size: clamp(1rem, 2vw, 1.4rem);
             color: var(--text-muted);
             margin: 0 auto 2.5rem;
             font-weight: 400;
@@ -184,7 +184,7 @@
 
         /* RSS News Section (Terminal) */
         .news-section { background-color: var(--bg-panel); }
-        .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto; }
+        .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto; }
         .news-card {
             background: var(--bg-card);
             border: var(--glass-border);
@@ -263,13 +263,45 @@
         .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
+        /* ========================================= */
+        /* MOBILE RESPONSIVE FIXES (Updated Section) */
+        /* ========================================= */
         @media (max-width: 900px) {
+            /* Fix Grid Layouts */
             .bento-grid { grid-template-columns: 1fr; }
             .bento-item:nth-child(1) { grid-column: span 1; }
-            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
-            nav ul { display: none; }
-            .ticker-wrap { display: none; /* Often best to hide complex widgets on small mobile */ }
-            header { top: 0; }
+            .news-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+            .footer-text { margin: 0 auto; }
+            
+            /* Make Navigation Wrap Beautifully Without Changing HTML */
+            header { 
+                flex-direction: column; 
+                gap: 15px; 
+                padding: 15px 5%; 
+            }
+            nav { width: 100%; }
+            nav ul { 
+                display: flex; 
+                flex-wrap: wrap; 
+                justify-content: center; 
+                gap: 12px 20px; 
+            }
+            nav a { font-size: 0.8rem; }
+            
+            /* Prevent Header from overlapping Hero content on Mobile */
+            .hero { padding-top: 140px; }
+            
+            /* Scale Down Spacing and Fonts */
+            .section { padding: 80px 5%; }
+            .section-header { margin-bottom: 50px; }
+            .section-title { font-size: 2.2rem; }
+            .bento-item { padding: 40px 25px; }
+            
+            /* Scale Down Form elements */
+            .typeform-container h2 { font-size: 2rem; }
+            .custom-form input, .custom-form textarea { font-size: 1.2rem; }
+            .submit-btn { padding: 15px 35px; width: 100%; justify-content: center; }
         }
     </style>
 </head>
@@ -296,7 +328,7 @@
         }
             </script>
         </div>
-        </div>
+    </div>
 
     <header id="navbar">
         <a href="#" class="logo">MARKET <span>THESIS</span></a>
